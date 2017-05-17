@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 environment=$1
-# theme="sage"
+theme="sage"
 
 ###
 # Check that we have the correct working directory.
@@ -33,29 +33,29 @@ then
 fi
 
 echo "Preparing files for deployment."
-cp -a "bedrock" "deploy"
+cp -a "htdocs" "deploy"
 cd "deploy"
 
 ###
 # Build theme assets with gulp
 ###
-# echo "Building theme assets."
-# cd "web/app/themes/${theme}"
-# npm install
-# bower install
-# if [ "$environment" == "staging" ]
-# then
-#  git checkout develop
-#   gulp
-# elif [ "$environment" == "production" ]
-# then
-#   git checkout master
-#   gulp --production
-# else
-#   echo "Invalid environment."
-#   exit
-#fi
-# cd "../../../.."
+echo "Building theme assets."
+cd "web/app/themes/${theme}"
+npm install
+bower install
+if [ "$environment" == "staging" ]
+then
+  git checkout develop
+  gulp
+elif [ "$environment" == "production" ]
+then
+  git checkout master
+  gulp --production
+else
+  echo "Invalid environment."
+  exit
+fi
+cd "../../../.."
 
 ###
 # Create a temporary wpengine branch
@@ -108,7 +108,7 @@ echo "Successfully deployed."
 # Remove deploy directory and move back to htdocs
 ###
 echo "Cleaning up..."
-cd "../bedrock"
+cd "../htdocs"
 rm -Rf "../deploy"
 git fetch
 echo "Done."

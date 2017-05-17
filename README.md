@@ -6,3 +6,8 @@ WPEngine doesn't support Composer, Gulp or Bower. This bash script will move the
 2. Ensure you use develop branch for staging, master for production locally
 3. Ensure you use staging, production remotes for WPEngine
 4. Run `sh wpengine.sh` followed by `staging` or `production`. E.g `sh wpengine.sh staging`
+
+# Customisation
+1. line 4: commented the theme		// Because we will be using our custom theme everytime 
+2. lin3 36: "bedrock"				// This is the installed directory of wordpress that contains all files.
+3. line 39 to 58 commented			// Because we will be using our custom theme everytime
